@@ -133,4 +133,6 @@ To access the Admin Panel in a fresh instance:
 ---
 
 ## 📝 License
-Proprietary & Confidential. Created by Pardhu Sree Rushi Varma.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Copyright (c) 2025 PardhuVarma Konduru.
+
