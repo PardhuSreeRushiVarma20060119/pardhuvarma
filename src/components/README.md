@@ -20,13 +20,14 @@ Groups of atoms functioning together.
 
 ### 3- Organisms
 Complex sections forming distinct parts of the interface.
-- **`AdminBar.jsx`**: The floating control deck. Contains `AssetManager`, `SettingsPanel`.
+- **`AdminBar.jsx`**: The floating control deck. Contains `AssetManager`.
+- **`SettingsPanel.jsx`**: Global site configuration (Title, Colors) and **Profile Customization** (Avatar, Glow).
 - **`ThinkingSection.jsx`**: The "Second Brain" Kanban board (Ideas/Notes).
 - **`AboutSection.jsx`**: Profile bio and skills.
 - **`TimelineSection.jsx`**: Chronological work history.
 
 ### 4- Templates/Layouts
-- **`JournalLayout.jsx`**: The master wrapper. Handles the Sidebar, Mobile Navigation, and Main Content Area scrolling.
+- **`JournalLayout.jsx`**: The master wrapper. Handles the Sidebar (with **Dynamic Profile Avatar**), Mobile Navigation, and Main Content Area scrolling.
 
 ## 🛠️ Key Components Deep Dive
 

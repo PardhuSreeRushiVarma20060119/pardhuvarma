@@ -52,3 +52,14 @@ A reusable component ensuring consistent vertical rhythm.
 A specialized UI component mimicking a fingerprint/retina scanner.
 - **States**: Idle (Pulse), Scanning (Progress Bar), Success (Green Flash), Error (Red Shake).
 - **Animation**: CSS Keyframes for the scanning laser effect.
+
+## 5. Reading Modes
+
+### Standard (Cyber)
+The default high-contrast dark mode for scanning and navigation.
+
+### Paper (Focus)
+A distraction-free reading experience toggled via the toolbar.
+- **Background**: `#1a1918` (Dark Sepia/Coffee). A warm, dark brown that mimicking aged paper in low light.
+- **Text**: `#e6e1dc` (Warm White).
+- **Purpose**: Reduces blue light exposure and eye strain during long reading sessions.

@@ -84,6 +84,12 @@ The "Projects" section utilizes a responsive Bento Grid (`src/components/BentoGr
 Extensive use of `backdrop-filter: blur()` combined with semi-transparent RGBA backgrounds to create depth and hierarchy.
 - **Utility**: `SettingsPanel`, `SecurityModal`, and `AdminBar` hover above the content on a Z-index of 3000+.
 
+### Personalization Engine
+Admins can customize the visual identity directly from the Settings Panel.
+- **Dynamic Profile Picture**: Upload and crop base64 images locally.
+- **Custom Backlight**: Real-time color picker for element glow effects (CSS Variables hot-swapping).
+- **Reading Modes**: Toggle between standard Cyber-Dark and **Paper Mode** (Dark Sepia) for eye comfort.
+
 ---
 
 ## ⚡ Performance Optimization

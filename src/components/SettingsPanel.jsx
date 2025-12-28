@@ -69,6 +69,56 @@ const SettingsPanel = ({ onClose }) => {
                     </div>
                 </div>
 
+                {/* Profile Customization */}
+                <div style={{ marginBottom: '2rem', borderTop: '1px solid #333', paddingTop: '1.5rem' }}>
+                    <h4 style={{ color: 'white', marginBottom: '1rem', fontSize: '1rem' }}>Profile Appearance</h4>
+
+                    {/* Image Upload */}
+                    <div style={{ marginBottom: '1rem' }}>
+                        <label style={{ display: 'block', color: '#666', fontSize: '0.8rem', marginBottom: '0.5rem' }} className="mono">PROFILE PICTURE</label>
+                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                            <img
+                                src={localSettings.profileImage || "/src/assets/profile.jpg"}
+                                alt="Preview"
+                                style={{ width: '50px', height: '50px', borderRadius: '10px', objectFit: 'cover', border: `1px solid ${localSettings.profileGlow || 'rgba(255,255,255,0.1)'}` }}
+                            />
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                    const file = e.target.files[0];
+                                    if (file) {
+                                        const reader = new FileReader();
+                                        reader.onloadend = () => {
+                                            handleChange('profileImage', reader.result);
+                                        };
+                                        reader.readAsDataURL(file);
+                                    }
+                                }}
+                                style={{ color: '#888', fontSize: '0.8rem' }}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Glow Color */}
+                    <div style={{ marginBottom: '1rem' }}>
+                        <label style={{ display: 'block', color: '#666', fontSize: '0.8rem', marginBottom: '0.5rem' }} className="mono">BACKLIGHT GLOW (HEX/RGBA)</label>
+                        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                            <input
+                                type="color"
+                                value={localSettings.profileGlow || '#00ff41'}
+                                onChange={e => handleChange('profileGlow', e.target.value)}
+                                style={{ background: 'transparent', border: 'none', width: '30px', height: '30px', cursor: 'pointer' }}
+                            />
+                            <input
+                                value={localSettings.profileGlow || '#00ff41'}
+                                onChange={e => handleChange('profileGlow', e.target.value)}
+                                style={{ flexGrow: 1, padding: '0.5rem', background: '#222', border: '1px solid #333', color: 'white', fontSize: '0.9rem' }}
+                            />
+                        </div>
+                    </div>
+                </div>
+
                 {/* Animations Toggle */}
                 <div style={{ marginBottom: '2rem' }}>
                     <label style={{ display: 'flex', alignItems: 'center', gap: '1rem', cursor: 'pointer' }}>

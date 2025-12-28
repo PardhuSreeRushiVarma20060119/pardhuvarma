@@ -170,9 +170,9 @@ const JournalLayout = () => {
                     top: '2rem',
                     right: '2rem',
                     zIndex: 1000,
-                    background: settings.readingMode ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.5)',
-                    color: settings.readingMode ? 'black' : 'white',
-                    border: 'none',
+                    background: 'rgba(255,255,255,0.1)',
+                    color: 'white', /* Always white for dark themes */
+                    border: '1px solid rgba(255,255,255,0.1)',
                     borderRadius: '50%',
                     width: '40px',
                     height: '40px',
@@ -183,6 +183,8 @@ const JournalLayout = () => {
                     backdropFilter: 'blur(5px)',
                     transition: 'all 0.3s'
                 }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
             >
                 {settings.readingMode ? (
                     <span style={{ fontSize: '1.2rem' }}>✕</span>
@@ -213,7 +215,53 @@ const JournalLayout = () => {
             )}
 
             <aside style={{ height: 'calc(100vh - 8rem)', position: 'sticky', top: '4rem', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ marginBottom: '2rem' }}>
+                <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                    <div
+                        style={{
+                            width: '150px',
+                            height: '150px',
+                            margin: '0 auto 1.5rem auto',
+                            borderRadius: '25px',
+                            background: 'rgba(255,255,255,0.03)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(10px)',
+                            padding: '6px',
+                            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                            cursor: 'pointer',
+                            transformStyle: 'preserve-3d',
+                            perspective: '1000px'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = 'perspective(1000px) rotateX(5deg) rotateY(-5deg) scale(1.05)';
+                            e.currentTarget.style.boxShadow = `0 10px 30px -10px ${settings.profileGlow || 'rgba(0, 255, 65, 0.3)'}`;
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                            e.currentTarget.style.boxShadow = 'none';
+                        }}
+                    >
+                        <img
+                            src={settings.profileImage || "/src/assets/profile.jpg"}
+                            alt="Pardhu Varma"
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                borderRadius: '15px',
+                                display: 'block'
+                            }}
+                            onError={(e) => {
+                                e.target.style.display = 'none'; // Hide if missing
+                                e.target.parentNode.innerText = 'PV'; // Fallback
+                                e.target.parentNode.style.color = 'var(--accent-cyber)';
+                                e.target.parentNode.style.display = 'flex';
+                                e.target.parentNode.style.alignItems = 'center';
+                                e.target.parentNode.style.justifyContent = 'center';
+                                e.target.parentNode.style.fontSize = '2rem';
+                                e.target.parentNode.style.fontFamily = 'var(--font-mono)';
+                            }}
+                        />
+                    </div>
                     <h1 style={{ fontSize: '1.8rem', lineHeight: 1 }}>Pardhu Varma</h1>
                     <p className="mono" style={{ fontSize: '0.75rem', marginTop: '0.5rem', color: 'var(--text-muted)' }}>
                         Cybersecurity Researcher<br />Hyderabad, IN
