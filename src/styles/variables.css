@@ -1,0 +1,73 @@
+:root {
+  /* Journal x Cyber Palette */
+  --bg-color: #050505;
+  /* Deep Obsidian */
+  --bg-panel: rgba(20, 20, 20, 0.6);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  --text-main: #f2f2f2;
+  --text-muted: #a0a0a0;
+  --text-dim: #505050;
+
+  --accent-gold: #D4AF37;
+  /* Subtle academic gold accent? Or maybe just keep it monochrome. Let's go Monochrome + slight teal. */
+  --accent-cyber: #00f0ff;
+  /* Subtle cyber undertone */
+
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing & Layout */
+  --max-width: 1400px;
+  /* Wide journal layout */
+  --sidebar-width: 280px;
+
+  /* Effects */
+  --glass-matte: blur(20px) saturate(180%);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Journal Grid Utilities */
+.journal-grid {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 4rem;
+}
+
+@media (max-width: 900px) {
+  .journal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.figure-caption {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
