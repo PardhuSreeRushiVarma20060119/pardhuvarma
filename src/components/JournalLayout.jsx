@@ -338,14 +338,8 @@ const JournalLayout = () => {
                     <SectionHeading id="research-areas"
                         action={(isAdmin && adminMode) ? (
                             <button onClick={() => {
-                                const newArea = { title: "New Area", desc: "Description..." };
-                                const newAreas = [...data.researchInterests, newArea];
-                                updateField('researchInterests', null, newAreas); // This needs the updateField logic to support array replacement or specific item update. 
-                                // Actually better: Add a dedicated update function or hack: "updateField" usually updates a property of an object. Here "settings" is explicit. 
-                                // Let's use addItem('researchInterests') if defined, or patch updateField.
-                                // Simplest: updateField('researchInterests', index, val) -> requires refactor of updateField.
-                                // Let's assume for now we only edit EXISTING. Adding new research areas requires a UI. 
-                                // For now, I'll enable EDITING existing ones.
+                                // Logic for adding new research areas can be added here if needed.
+                                // For now, we support editing existing ones.
                             }} style={{ display: 'none' }}>+ Add</button>
                         ) : null}
                     >01. Research Areas</SectionHeading>
@@ -359,14 +353,6 @@ const JournalLayout = () => {
                                         onChange={(val) => {
                                             const newAreas = [...data.researchInterests];
                                             newAreas[i] = { ...newAreas[i], title: val };
-                                            // Direct State Update - We need a way to set the whole array in DataContext
-                                            // Current updateField is: newState[section][field] = value. 
-                                            // But researchInterests is an ARRAY at the top level? No, it's data.researchInterests.
-                                            // So updateField('researchInterests', i, newVal) won't work with current logic.
-                                            // Let's check DataContext.updateField logic:
-                                            // newState[section][field] = value;
-                                            // data.researchInterests is an Array. So section='researchInterests', field=index?
-                                            // Yes! newState['researchInterests'][0] = ... works in JS.
                                             updateField('researchInterests', i, { ...area, title: val });
                                         }}
                                     />

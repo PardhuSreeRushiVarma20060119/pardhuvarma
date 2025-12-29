@@ -33,140 +33,59 @@ export const DataProvider = ({ children }) => {
         readingMode: false // New: Paper Mode
     });
 
+    // Helper to ensure all items have IDs and proper structure
+    const normalizeData = (raw) => {
+        const normalized = { ...raw };
+        const collections = ['blogs', 'projects', 'reflections', 'ideas', 'privateNotes', 'assets', 'researchInterests', 'papers', 'timeline', 'certifications'];
+
+        collections.forEach(key => {
+            if (Array.isArray(normalized[key])) {
+                normalized[key] = normalized[key].map((item, i) => {
+                    // Handle legacy string items
+                    let obj = typeof item === 'string' ? { text: item } : { ...item };
+
+                    // Ensure a stable ID if missing
+                    if (!obj.id) {
+                        // Use a combination of key, index and a one-time random seed or timestamp
+                        // Since we save it back immediately, this becomes the permanent ID.
+                        obj.id = `${key.slice(0, 3)}-${Date.now()}-${i}-${Math.floor(Math.random() * 1000)}`;
+                    } else {
+                        obj.id = obj.id.toString();
+                    }
+                    return obj;
+                });
+            }
+        });
+
+        // Ensure critical objects exist
+        if (!normalized.home) normalized.home = sourceContent.home;
+        if (!normalized.about) normalized.about = sourceContent.about;
+        if (!normalized.settings) normalized.settings = settings;
+
+        return normalized;
+    };
+
     // Load from "DB" (LocalStorage) on mount
     useEffect(() => {
         const savedData = localStorage.getItem('portfolio_db');
+        let initial;
+
         if (savedData) {
             try {
-                let parsed = JSON.parse(savedData);
-
-                // Recovery: If critical sections are missing (e.g. from bad initialization), restore from sourceContent
-                if (!parsed.home) parsed.home = sourceContent.home;
-                if (!parsed.about) parsed.about = sourceContent.about;
-                if (!parsed.timeline) parsed.timeline = sourceContent.timeline;
-                if (!parsed.certifications) parsed.certifications = sourceContent.certifications;
-                if (!parsed.projects || parsed.projects.length === 0) parsed.projects = sourceContent.projects; // Restore projects if empty? Maybe dangerous if user deleted all. 
-                // But given the "blank screen" bug, it's likely they have 0 projects because of the bug. 
-                // Let's rely on !parsed.home as the indicator of "Bad Seed".
-
-                // Migration: Ensure new arrays exist
-                if (!parsed.reflections) parsed.reflections = [];
-                if (!parsed.ideas) parsed.ideas = [];
-                if (!parsed.privateNotes) parsed.privateNotes = [];
-
-                if (parsed.settings) setSettings(parsed.settings); // Load settings
-
-                // Patch: Ensure TryHackMe object exists
-                if (!parsed.tryHackMe) {
-                    parsed.tryHackMe = {
-                        username: 'ZenRage',
-                        rank: '22702',
-                        roomsCompleted: 143,
-                        badges: 18,
-                        skills: {
-                            'Enumeration': 90,
-                            'Exploitation': 85,
-                            'Privilege Escalation': 75,
-                            'Vulnerability Analysis': 60,
-                            'Red Teaming': 45,
-                            'Penetration Testing': 40
-                        },
-                        history: [
-                            { date: '2025-01', count: 45 },
-                            { date: '2025-02', count: 80 },
-                            { date: '2025-03', count: 120 },
-                            { date: '2025-04', count: 90 },
-                            { date: '2025-05', count: 110 },
-                            { date: '2025-06', count: 60 },
-                        ],
-                        isVisible: true
-                    };
-                }
-
-                // Patch: Force Update Contact Info (Source of Truth is content.js)
-                if (sourceContent.contact) {
-                    parsed.contact = sourceContent.contact;
-                }
-
-                // Patch: Ensure all Projects have IDs (Migration) & Visibility & Cleanup Ghost Items
-                if (parsed.projects) {
-                    parsed.projects = parsed.projects
-                        .filter(p => p.title && p.title.trim() !== "New Project" && p.title.trim() !== "") // Remove ghosts/initial blanks
-                        .map((p, i) => ({
-                            ...p,
-                            id: p.id || `proj-${Date.now()}-${i}`,
-                            visibility: p.visibility || 'public' // Default to Public for existing
-                        }));
-                }
-
-                // Patch: Ensure all Blogs have IDs & Status
-                if (parsed.blogs) {
-                    parsed.blogs = parsed.blogs.map((b, i) => ({
-                        ...b,
-                        id: b.id || `blog-${Date.now()}-${i}`,
-                        status: b.status || 'public' // Default to Public/Published for existing
-                    }));
-                }
-
-                setData(parsed);
-                // FORCE SAVE to persist the generated IDs immediately
-                localStorage.setItem('portfolio_db', JSON.stringify(parsed));
-
+                const parsed = JSON.parse(savedData);
+                initial = normalizeData(parsed);
+                if (parsed.settings) setSettings(parsed.settings);
             } catch (e) {
                 console.error("DB Load Error", e);
+                initial = normalizeData(sourceContent);
             }
         } else {
-            // First load: Initialize from sourceContent (content.js)
-            const seed = {
-                ...sourceContent, // Load all data from content.js
-                reflections: [],
-                ideas: [],
-                privateNotes: [], // Ensure new fields exist
-                tryHackMe: { // Default THM data
-                    username: 'ZenRage',
-                    rank: '22702',
-                    roomsCompleted: 143,
-                    badges: 18,
-                    skills: {
-                        'Enumeration': 90,
-                        'Exploitation': 85,
-                        'Privilege Escalation': 75,
-                        'Vulnerability Analysis': 60,
-                        'Red Teaming': 45,
-                        'Penetration Testing': 40
-                    },
-                    history: [
-                        { date: '2025-01', count: 45 },
-                        { date: '2025-02', count: 80 },
-                        { date: '2025-03', count: 120 },
-                        { date: '2025-04', count: 90 },
-                        { date: '2025-05', count: 110 },
-                        { date: '2025-06', count: 60 },
-                    ],
-                    isVisible: true
-                }
-            };
-
-            // Migration: Assign IDs + Visibility
-            if (seed.projects) {
-                seed.projects = seed.projects.map((p, i) => ({
-                    ...p,
-                    id: `proj-${Date.now()}-${i}`,
-                    visibility: 'public'
-                }));
-            }
-            if (seed.blogs) {
-                seed.blogs = seed.blogs.map((b, i) => ({
-                    ...b,
-                    id: b.id || `blog-${Date.now()}-${i}`,
-                    status: 'public'
-                }));
-            }
-
-            setData(seed);
-            // Persistent initial seed
-            localStorage.setItem('portfolio_db', JSON.stringify(seed));
+            initial = normalizeData(sourceContent);
         }
+
+        setData(initial);
+        // Persist normalized data immediately
+        localStorage.setItem('portfolio_db', JSON.stringify({ ...initial, settings: settings }));
     }, []);
 
     // Save to "DB"
@@ -198,24 +117,26 @@ export const DataProvider = ({ children }) => {
     const updateField = (section, field, value) => {
         setData(prev => {
             const newState = { ...prev };
-            // For singleton sections like 'home', 'about', we track history on the section itself if checks allow
-            if (newState[section] && typeof newState[section] === 'object') {
-                // If we are updating a specific field, we should track the old value
-                // Since 'home' uses top-level object, let's attach a hidden _history property or just update
-                // Simpler: Just update for now. Detailed field history is complex for nested objects.
-                // Let's implement full item tracking for Blogs/Projects first as requested.
-                // Attempting lightweight tracking for section:
-                // const oldSection = { ...newState[section] }; 
-                // Don't track yet for simple fields to avoid bloat.
 
-                if (field) {
-                    newState[section][field] = value;
-                } else {
-                    // direct replace (array or object)
-                    newState[section] = value;
-                }
+            if (field === null || field === undefined) {
+                // Direct replacement
+                newState[section] = value;
+            } else if (Array.isArray(newState[section])) {
+                // Handle Array index update
+                const newArr = [...newState[section]];
+                newArr[field] = value;
+                newState[section] = newArr;
+            } else if (typeof newState[section] === 'object' && newState[section] !== null) {
+                // Handle Object property update
+                newState[section] = { ...newState[section], [field]: value };
+            } else {
+                // Fallback for primitive or non-existent section
+                newState[section] = value;
             }
-            saveContent(newState); // Auto-persist
+
+            // Persist to localStorage after setting state
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -231,7 +152,8 @@ export const DataProvider = ({ children }) => {
                 };
                 newState[collectionName] = [newItem, ...newState[collectionName]];
             }
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -262,16 +184,23 @@ export const DataProvider = ({ children }) => {
                 };
                 newState.blogs = [newPost, ...blogs];
             }
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const deleteBlog = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.blogs = (newState.blogs || []).filter(b => b.id !== id);
-            saveContent(newState);
+            newState.blogs = (newState.blogs || []).filter(b => {
+                const bId = b.id?.toString() || '';
+                const tId = id.toString();
+                return bId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -299,16 +228,23 @@ export const DataProvider = ({ children }) => {
                 };
                 newState.projects = [newProj, ...projects];
             }
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const deleteProject = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.projects = (newState.projects || []).filter(p => p.id !== id);
-            saveContent(newState);
+            newState.projects = (newState.projects || []).filter(p => {
+                const pId = p.id?.toString() || '';
+                const tId = id.toString();
+                return pId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -325,10 +261,16 @@ export const DataProvider = ({ children }) => {
     };
 
     const deleteAsset = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.assets = (newState.assets || []).filter(a => a.id !== id);
-            saveContent(newState);
+            newState.assets = (newState.assets || []).filter(a => {
+                const aId = a.id?.toString() || '';
+                const tId = id.toString();
+                return aId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -337,7 +279,8 @@ export const DataProvider = ({ children }) => {
     const updateTryHackMe = (newStats) => {
         setData(prev => {
             const newState = { ...prev, tryHackMe: newStats };
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -353,25 +296,36 @@ export const DataProvider = ({ children }) => {
                 history: [{ timestamp: new Date().toISOString(), msg: "Created" }]
             };
             newState.reflections = [newRef, ...(newState.reflections || [])];
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const deleteReflection = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.reflections = (newState.reflections || []).filter(r => r.id !== id);
-            saveContent(newState);
+            newState.reflections = (newState.reflections || []).filter(r => {
+                const rId = r.id?.toString() || '';
+                const tId = id.toString();
+                return rId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const updateReflection = (reflection) => {
+        if (!reflection || !reflection.id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.reflections = (newState.reflections || []).map(r => r.id === reflection.id ? reflection : r);
-            saveContent(newState);
+            newState.reflections = (newState.reflections || []).map(r =>
+                (r.id?.toString() === reflection.id.toString()) ? reflection : r
+            );
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -387,25 +341,36 @@ export const DataProvider = ({ children }) => {
                 history: [{ timestamp: new Date().toISOString(), msg: "Created" }]
             };
             newState.ideas = [newIdea, ...(newState.ideas || [])];
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const updateIdea = (idea) => {
+        if (!idea || !idea.id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.ideas = (newState.ideas || []).map(i => i.id === idea.id ? idea : i);
-            saveContent(newState);
+            newState.ideas = (newState.ideas || []).map(i =>
+                (i.id?.toString() === idea.id.toString()) ? idea : i
+            );
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const deleteIdea = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.ideas = (newState.ideas || []).filter(i => i.id !== id);
-            saveContent(newState);
+            newState.ideas = (newState.ideas || []).filter(i => {
+                const iId = i.id?.toString() || '';
+                const tId = id.toString();
+                return iId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -422,25 +387,36 @@ export const DataProvider = ({ children }) => {
                 history: [{ timestamp: new Date().toISOString(), msg: "Created" }]
             };
             newState.privateNotes = [newNote, ...(newState.privateNotes || [])];
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const updatePrivateNote = (note) => {
+        if (!note || !note.id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.privateNotes = (newState.privateNotes || []).map(n => n.id === note.id ? note : n);
-            saveContent(newState);
+            newState.privateNotes = (newState.privateNotes || []).map(n =>
+                (n.id?.toString() === note.id.toString()) ? note : n
+            );
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
 
     const deletePrivateNote = (id) => {
+        if (!id) return;
         setData(prev => {
             const newState = { ...prev };
-            newState.privateNotes = (newState.privateNotes || []).filter(n => n.id !== id);
-            saveContent(newState);
+            newState.privateNotes = (newState.privateNotes || []).filter(n => {
+                const nId = n.id?.toString() || '';
+                const tId = id.toString();
+                return nId !== tId;
+            });
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };
@@ -451,7 +427,8 @@ export const DataProvider = ({ children }) => {
                 ...prev,
                 ideas: (prev.ideas || []).map(i => i.id === id ? { ...i, isPrivate: !i.isPrivate } : i)
             };
-            saveContent(newState);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
             return newState;
         });
     };

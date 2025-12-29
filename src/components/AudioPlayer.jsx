@@ -123,6 +123,20 @@ const AudioPlayer = () => {
                     </div>
                 </div>
             </div>
+            <style>{`
+                @keyframes flow-scroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                @keyframes string-vibrate {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-2px); }
+                }
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-100%); }
+                }
+            `}</style>
         </div>
     );
 };
