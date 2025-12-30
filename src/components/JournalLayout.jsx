@@ -119,7 +119,7 @@ import SectionHeading from './SectionHeading';
 import { useNavigate } from 'react-router-dom';
 
 const JournalLayout = () => {
-    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject, savePaper, deletePaper, movePaper, swapPapers, exportData } = useData();
+    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject, savePaper, deletePaper, movePaper, swapPapers, exportData, copyDataToClipboard } = useData();
     const { isAdmin, adminMode } = useAuth();
     const navigate = useNavigate();
     const [activeId, setActiveId] = useState('abstract');
@@ -133,11 +133,15 @@ const JournalLayout = () => {
         updateSettings({ ...settings, readingMode: !settings.readingMode });
     };
 
+    const handleCopy = (e) => {
+        if (e) e.stopPropagation();
+        copyDataToClipboard();
+    };
+
     // Export Handler
-    const handleExport = () => {
-        if (window.confirm("Download current database backup?")) {
-            exportData();
-        }
+    const handleExport = (e) => {
+        if (e) e.stopPropagation();
+        exportData();
     };
 
     useEffect(() => {
@@ -423,9 +427,12 @@ const JournalLayout = () => {
                 <section id="selected-figures">
                     <SectionHeading id="selected-figures"
                         action={(isAdmin && adminMode) ? (
-                            <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                <button onClick={handleExport} style={{ background: 'transparent', color: '#888', border: '1px solid #444', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem' }}>
+                            <div style={{ display: 'flex', gap: '0.5rem', position: 'relative', zIndex: 10, pointerEvents: 'auto' }}>
+                                <button onClick={(e) => handleExport(e)} title="Download JSON file" style={{ background: 'transparent', color: '#888', border: '1px solid #444', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem', pointerEvents: 'all' }}>
                                     EXPORT DB
+                                </button>
+                                <button onClick={(e) => handleCopy(e)} title="Copy JSON text to clipboard" style={{ background: 'transparent', color: '#888', border: '1px solid #444', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem', pointerEvents: 'all' }}>
+                                    COPY JSON
                                 </button>
                                 <button onClick={() => {
                                     setEditingProject({

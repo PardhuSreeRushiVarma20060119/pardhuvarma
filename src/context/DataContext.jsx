@@ -386,16 +386,41 @@ export const DataProvider = ({ children }) => {
     // Export Data Action
     const exportData = () => {
         if (!data) return;
+        try {
+            const fullDb = { ...data, settings };
+            const dataStr = JSON.stringify(fullDb, null, 2);
+            const blob = new Blob([dataStr], { type: "application/json" });
+            const url = window.URL.createObjectURL(blob);
+
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'portfolio_db_backup.json';
+
+            // IMPORTANT: Link must be in DOM and visible/interactable for some browsers to respect 'download'
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+
+            setTimeout(() => {
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+            }, 10000);
+        } catch (e) {
+            console.error("Export error:", e);
+            alert("Export error: " + e.message);
+        }
+    };
+
+    const copyDataToClipboard = () => {
+        if (!data) return;
         const fullDb = { ...data, settings };
         const dataStr = JSON.stringify(fullDb, null, 2);
-        const blob = new Blob([dataStr], { type: "application/json" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `portfolio_backup_${new Date().toISOString().slice(0, 10)}.json`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        navigator.clipboard.writeText(dataStr)
+            .then(() => alert("Database JSON copied to clipboard!"))
+            .catch(err => {
+                console.error("Copy failed:", err);
+                alert("Failed to copy. Check console.");
+            });
     };
 
     // --- Reflections (What Changed My Thinking) ---
@@ -556,9 +581,7 @@ export const DataProvider = ({ children }) => {
             addReflection, deleteReflection, updateReflection,
             addIdea, deleteIdea, updateIdea, toggleIdeaVisibility,
             addPrivateNote, deletePrivateNote, updatePrivateNote,
-            addIdea, deleteIdea, updateIdea, toggleIdeaVisibility,
-            addPrivateNote, deletePrivateNote, updatePrivateNote,
-            addItem, addAsset, deleteAsset, exportData
+            addItem, addAsset, deleteAsset, exportData, copyDataToClipboard
         }}>
             {children}
         </DataContext.Provider>
