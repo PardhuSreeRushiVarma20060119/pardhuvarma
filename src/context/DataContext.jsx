@@ -58,8 +58,17 @@ export const DataProvider = ({ children }) => {
         });
 
         // Ensure critical objects exist
-        if (!normalized.home) normalized.home = sourceContent.home;
-        if (!normalized.about) normalized.about = sourceContent.about;
+        if (!normalized.home || !normalized.home.mainText) normalized.home = { ...sourceContent.home, ...normalized.home };
+        if (!normalized.about || !normalized.about.title) normalized.about = { ...sourceContent.about, ...normalized.about };
+        if (!normalized.contact) normalized.contact = sourceContent.contact;
+
+        // Ensure new sections exist (e.g., tryHackMe update)
+        // Aggressive fix: if missing OR if it lacks actual data (like 'skills' which is new)
+        if (!normalized.tryHackMe || !normalized.tryHackMe.skills) {
+            console.log("Merging sourceContent.tryHackMe into data");
+            normalized.tryHackMe = sourceContent.tryHackMe;
+        }
+
         if (!normalized.settings) normalized.settings = settings;
 
         return normalized;
@@ -248,6 +257,95 @@ export const DataProvider = ({ children }) => {
             return newState;
         });
     };
+
+    // Paper Actions (Admin)
+    const savePaper = (paper) => {
+        setData(prev => {
+            const newState = { ...prev };
+            const papers = newState.papers || [];
+            if (paper.id) {
+                // Update
+                newState.papers = papers.map(p => {
+                    if (p.id === paper.id) {
+                        return { ...paper, history: trackHistory(p, `Edited ${paper.title}`) };
+                    }
+                    return p;
+                });
+            } else {
+                // Create
+                const newPaper = {
+                    ...paper,
+                    id: `paper-${Date.now()}`,
+                    history: [{ timestamp: new Date().toISOString(), msg: "Created" }]
+                };
+                newState.papers = [newPaper, ...papers];
+            }
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
+            return newState;
+        });
+    };
+
+    const deletePaper = (id) => {
+        if (!id) return;
+        setData(prev => {
+            const newState = { ...prev };
+            newState.papers = (newState.papers || []).filter(p => p.id !== id);
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
+            return newState;
+        });
+    };
+
+    // Swap two papers by ID (for drag/drop or up/down logic)
+    const swapPapers = (id1, id2) => {
+        console.log(`swapPapers called with: ${id1}, ${id2}`);
+        setData(prev => {
+            const newState = { ...prev };
+            const papers = [...(newState.papers || [])];
+            const idx1 = papers.findIndex(p => p.id === id1);
+            const idx2 = papers.findIndex(p => p.id === id2);
+
+            console.log(`Indices found: ${idx1}, ${idx2}`);
+
+            if (idx1 === -1 || idx2 === -1) {
+                console.error("Swap failed: One or both IDs not found");
+                return prev;
+            }
+
+            // Swap
+            [papers[idx1], papers[idx2]] = [papers[idx2], papers[idx1]];
+
+            newState.papers = papers;
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
+            return newState;
+        });
+    };
+
+    const movePaper = (id, direction) => {
+        setData(prev => {
+            const newState = { ...prev };
+            const papers = [...(newState.papers || [])];
+            const index = papers.findIndex(p => p.id === id);
+
+            if (index === -1) return prev;
+
+            const newIndex = direction === 'up' ? index - 1 : index + 1;
+
+            if (newIndex < 0 || newIndex >= papers.length) return prev; // Out of bounds
+
+            // Swap
+            [papers[index], papers[newIndex]] = [papers[newIndex], papers[index]];
+
+            newState.papers = papers;
+            const fullDb = { ...newState, settings: settings };
+            localStorage.setItem('portfolio_db', JSON.stringify(fullDb));
+            return newState;
+        });
+    };
+
+
 
     // Asset Actions
     const addAsset = (asset) => {
@@ -439,6 +537,7 @@ export const DataProvider = ({ children }) => {
             updateField, updateTryHackMe,
             saveProject, deleteProject,
             saveBlog, deleteBlog,
+            savePaper, deletePaper, movePaper, swapPapers,
             addReflection, deleteReflection, updateReflection,
             addIdea, deleteIdea, updateIdea, toggleIdeaVisibility,
             addPrivateNote, deletePrivateNote, updatePrivateNote,

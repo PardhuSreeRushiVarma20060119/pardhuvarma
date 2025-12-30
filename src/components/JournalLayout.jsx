@@ -8,7 +8,10 @@ import TrainingSection from './TrainingSection';
 import ThinkingSection from './ThinkingSection';
 import BlogEditor from './BlogEditor';
 import ProjectEditor from './ProjectEditor';
+import PublicationEditor from './PublicationEditor';
 import AudioPlayer from './AudioPlayer';
+
+import PublicationCard from './PublicationCard';
 
 const TOCItem = ({ id, label, active }) => (
     <a href={`#${id}`} style={{
@@ -79,23 +82,6 @@ const FigureCard = ({ project, onClick, isAdmin, adminMode }) => {
     );
 };
 
-const PaperRow = ({ paper }) => (
-    <div style={{
-        padding: '1.5rem 0',
-        borderBottom: '1px solid var(--border-subtle)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem'
-    }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-            <h4 style={{ fontSize: '1.1rem', fontWeight: 600 }}>{paper.title}</h4>
-            <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--accent-cyber)', whiteSpace: 'nowrap' }}>{paper.status}</span>
-        </div>
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', maxWidth: '90%' }}>{paper.desc}</p>
-        <span className="mono" style={{ fontSize: '0.7rem', color: 'var(--text-dim)' }}>Type: {paper.type}</span>
-    </div>
-);
-
 const BlogRow = ({ blog, onClick, onRead, isAdmin, adminMode }) => (
     <div
         onClick={() => (isAdmin && adminMode) ? onClick(blog) : onRead(blog)}
@@ -133,13 +119,14 @@ import SectionHeading from './SectionHeading';
 import { useNavigate } from 'react-router-dom';
 
 const JournalLayout = () => {
-    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject } = useData();
+    const { data, settings, updateSettings, updateField, saveBlog, deleteBlog, saveProject, deleteProject, savePaper, deletePaper, movePaper, swapPapers } = useData();
     const { isAdmin, adminMode } = useAuth();
     const navigate = useNavigate();
     const [activeId, setActiveId] = useState('abstract');
 
     const [editingBlog, setEditingBlog] = useState(null);
     const [editingProject, setEditingProject] = useState(null);
+    const [editingPaper, setEditingPaper] = useState(null);
     const [blogSearch, setBlogSearch] = useState('');
 
     const toggleReaderMode = () => {
@@ -212,6 +199,15 @@ const JournalLayout = () => {
                     onCancel={() => setEditingProject(null)}
                     onDelete={(id) => { deleteProject(id); setEditingProject(null); }}
                     onSave={(proj) => { saveProject(proj); setEditingProject(null); }}
+                />
+            )}
+
+            {editingPaper && (
+                <PublicationEditor
+                    paper={editingPaper}
+                    onCancel={() => setEditingPaper(null)}
+                    onDelete={(id) => { deletePaper(id); setEditingPaper(null); }}
+                    onSave={(paper) => { savePaper(paper); setEditingPaper(null); }}
                 />
             )}
 
@@ -372,9 +368,48 @@ const JournalLayout = () => {
                 </section>
 
                 <section id="papers">
-                    <SectionHeading id="papers">02. Publications & Preprints</SectionHeading>
+                    <SectionHeading id="papers"
+                        action={(isAdmin && adminMode) ? (
+                            <button onClick={() => setEditingPaper({})} style={{ background: 'white', color: 'black', border: 'none', padding: '0.3rem 0.8rem', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 600 }}>
+                                + NEW PUB
+                            </button>
+                        ) : null}
+                    >02. Publications & Preprints</SectionHeading>
                     <div>
-                        {data.papers.map((paper, i) => <PaperRow key={i} paper={paper} />)}
+                        {(() => {
+                            const pinnedPapers = data.papers.filter(p => p.pinned);
+                            const unpinnedPapers = data.papers.filter(p => !p.pinned);
+
+                            const renderList = (list, isPinnedGroup) => (
+                                list.map((paper, i) => (
+                                    <PublicationCard
+                                        key={paper.id || i}
+                                        paper={paper}
+                                        isAdmin={isAdmin}
+                                        adminMode={adminMode}
+                                        onEdit={() => setEditingPaper(paper)}
+                                        onMove={(dir) => {
+                                            // Ensure we only swap with neighbors in the same group!
+                                            // Visual list is 'list'.
+                                            if (dir === 'up') {
+                                                if (i > 0) swapPapers(paper.id, list[i - 1].id);
+                                            } else {
+                                                if (i < list.length - 1) swapPapers(paper.id, list[i + 1].id);
+                                            }
+                                        }}
+                                        isFirst={i === 0}
+                                        isLast={i === list.length - 1}
+                                    />
+                                ))
+                            );
+
+                            return (
+                                <>
+                                    {renderList(pinnedPapers, true)}
+                                    {renderList(unpinnedPapers, false)}
+                                </>
+                            );
+                        })()}
                     </div>
                 </section>
 
@@ -400,7 +435,8 @@ const JournalLayout = () => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
                         {data.projects
                             .filter(project => {
-                                if (!isAdmin && project.visibility !== 'public') return false; // Hide non-public from guests
+                                const vis = project.visibility || 'public';
+                                if (!isAdmin && vis !== 'public') return false; // Hide non-public from guests
                                 return true;
                             })
                             .map((project, i) => (
@@ -468,7 +504,8 @@ const JournalLayout = () => {
                         {data.blogs
                             .filter(blog => {
                                 // 1. Status Filter (Hide drafts/archived unless admin)
-                                if (!isAdmin && blog.status !== 'public') return false;
+                                const status = blog.status || 'public';
+                                if (!isAdmin && status !== 'public') return false;
 
                                 // 2. Search Filter
                                 const search = blogSearch.toLowerCase();
@@ -537,7 +574,7 @@ const JournalLayout = () => {
                 </section>
 
             </main>
-        </div>
+        </div >
     );
 };
 

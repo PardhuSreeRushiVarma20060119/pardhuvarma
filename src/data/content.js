@@ -34,34 +34,100 @@ export const content = {
         { title: "Trustworthy ML", desc: "Explainability, uncertainty, distribution shifts" }
     ],
 
+    tryHackMe: {
+        isVisible: true,
+        rank: "God",
+        roomsCompleted: 142,
+        badges: 26,
+        skills: {
+            "Web Fundamentals": 100,
+            "Network Security": 90,
+            "Privilege Escalation": 85,
+            "Windows Exploitation": 80,
+            "Active Directory": 75
+        }
+    },
+
     papers: [
         {
+            id: "paper-aads",
             title: "Building AADS — Agentic AI Defense Swarms with Safety Governance",
-            status: "In Progress / Preprint",
-            type: "Research Paper",
-            desc: "Exploring swarm-level autonomy combined with strict runtime governance constraints to prevent adversarial subversion in defense swarms.",
-            link: "#"
+            status: {
+                stage: "Preprint",
+                artifact: "Research Paper",
+                confidence: "Exploratory"
+            },
+            abstract: "This paper explores the integration of swarm-level autonomy with strict runtime governance constraints to prevent adversarial subversion in defense swarms. By decoupling the tactical execution layer from the strategic governance layer, we propose a hybrid architecture that maintains mission efficacy while enforcing hard safety boundaries. The research addresses key challenges in multi-agent coordination under adversarial duress, specifically focusing on command authentication and Byzantine fault tolerance in high-stakes environments.",
+            lineage: [
+                { type: "Builds on", title: "Runtime Governance", link: "#" },
+                { type: "Related", title: "MARL Stress-Test Framework", link: "#" }
+            ],
+            links: {
+                pdf: "#",
+                notes: "#"
+            },
+            metadata: {
+                venue: "Target: USENIX / CCS",
+                contribution: "Systems Design",
+                limitations: "Simulated environments only; physical drone testing pending."
+            }
         },
         {
+            id: "paper-marl-stress",
             title: "Designing Adversarial Stress-Tests for MARL Agents",
-            status: "In Progress",
-            type: "Methodology",
-            desc: "A framework for evaluating the robustness of Multi-Agent Reinforcement Learning systems against coordinated adversarial attacks.",
-            link: "#"
+            status: {
+                stage: "Draft",
+                artifact: "Methodology",
+                confidence: "Validated"
+            },
+            abstract: "Standard evaluation metrics for Multi-Agent Reinforcement Learning (MARL) often fail to capture catastrophic edge-cases induced by coordinated adversaries. We introduce a novel stress-testing framework that procedurally generates adversarial scenarios targeting communication channels and sensor integrity. Preliminary results show that even state-of-the-art cooperative agents exhibit brittle failure modes when subjected to noise-injected communication subgraphs.",
+            lineage: [],
+            links: {
+                code: "https://github.com/PardhuSreeRushiVarma20060119",
+                experiments: "#"
+            },
+            metadata: {
+                contribution: "Methodological Framework",
+                limitations: "Focuses on discrete action spaces."
+            }
         },
         {
+            id: "paper-gov-constraint",
             title: "Governance as a Technical Constraint in AI Runtime",
-            status: "Draft",
-            type: "Position Paper",
-            desc: "Proposing a shift from policy-based governance to architectural kill-switches and isolation layers in safety-critical AI.",
-            link: "#"
+            status: {
+                stage: "Review",
+                artifact: "Position Paper",
+                confidence: "Formalized"
+            },
+            abstract: "Current AI safety governance relies heavily on policy and post-hoc auditing. We argue for a shift towards 'Governance as Code'—embedding kill-switches, isolation layers, and immutable audit logs directly into the AI runtime environment. This position paper draws parallels between industrial safety instrumented systems (SIS) and modern AI deployment, proposing a standardized API for runtime intervention.",
+            lineage: [
+                { type: "Precedes", title: "Building AADS", link: "#" }
+            ],
+            links: {
+                pdf: "#"
+            },
+            metadata: {
+                venue: "SysML Workshop",
+                contribution: "Conceptual / Position"
+            }
         },
         {
+            id: "paper-gnim",
             title: "Prototyping GNIM: Cyber-Geospatial Intelligence Mapping",
-            status: "Research",
-            type: "Technical Report",
-            desc: "RF-aware situational awareness mapping for cyber-physical threat modeling.",
-            link: "#"
+            status: {
+                stage: "Archived",
+                artifact: "Technical Report",
+                confidence: "Prototype"
+            },
+            abstract: "GNIM is an experimental system for mapping RF signals to geospatial coordinates to enhance situational awareness in cyber-physical threat modeling. This report details the hardware prototype using defined software radio (SDR) and a custom visualization stack. While the prototype successfully identified signal sources in an urban environment, significant modifications are required for real-time tracking.",
+            lineage: [],
+            links: {
+                code: "#",
+                figures: "#"
+            },
+            metadata: {
+                contribution: "System Prototype"
+            }
         }
     ],
 
