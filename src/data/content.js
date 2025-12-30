@@ -1,9 +1,9 @@
 export const content = {
-    home: {
-        mainText: "Pardhu Varma",
-        subText: "Cybersecurity Student & Systems Researcher",
-        intro: "I am a 3rd-year cybersecurity student with strong research interests in Adversarial AI, Cyber-Physical Systems, Systems Security Research, and Robust Machine Learning.",
-        abstract: [
+    "home": {
+        "mainText": "Pardhu Varma",
+        "subText": "Cybersecurity Student & Systems Researcher",
+        "intro": "I am a 3rd-year cybersecurity student with strong research interests in Adversarial AI, Cyber-Physical Systems, Systems Security Research, and Robust Machine Learning.",
+        "abstract": [
             "My research focus involves understanding attacker–defender dynamics within intelligent systems and analyzing and constraining AI behavior under adversarial influence through runtime-governed architectures.",
             "I explore areas such as adversarial ML attacks and defenses, cyber-physical threat modeling, robust learning architectures, and the reliability of AI-enabled systems in real-world settings. I’m particularly drawn to research at the intersection of AI, systems security, and cyber-physical infrastructures.",
             "I aim to pursue advanced research at CISPA – Helmholtz Center for Information Security / Saarland University, and eventually a PhD or long-term research career in AI security and systems security research.",
@@ -11,10 +11,9 @@ export const content = {
             "I am actively strengthening my academic foundation in AI, security, and systems engineering, and remain committed to advancing through rigorous study, research immersion, and scientifically grounded exploration."
         ]
     },
-
-    about: {
-        title: "About The Researcher",
-        longTermGoals: [
+    "about": {
+        "title": "About The Researcher",
+        "longTermGoals": [
             "Safe Autonomous Systems",
             "Systems Security Research",
             "Agentic AI Runtime Design",
@@ -23,226 +22,1152 @@ export const content = {
             "Secure Cyber-Physical Intelligence"
         ]
     },
-
-    researchInterests: [
-        { title: "Agentic Swarm Intelligence", desc: "Autonomous defense agents, role-switching, emergent coordination" },
-        { title: "AI Runtime Security", desc: "Kill-switches, governance modules, safety-critical constraints" },
-        { title: "Adversarial Machine Learning", desc: "Robustness, poisoning/evasion, red-team AI" },
-        { title: "RL-LoRA Behaviour Systems", desc: "Modular behavioural LoRA patches, dynamic skill composition" },
-        { title: "Cyber-Physical & CPS Security", desc: "Secure sensing, anomaly detection, physical-world adversaries" },
-        { title: "Distributed Systems for AI", desc: "Kubernetes-orchestrated agents, fault-tolerant multi-agent infrastructure" },
-        { title: "Trustworthy ML", desc: "Explainability, uncertainty, distribution shifts" }
+    "researchInterests": [
+        {
+            "title": "Agentic Swarm Intelligence",
+            "desc": "Autonomous defense agents, role-switching, emergent coordination",
+            "id": "res-1767104327384-0-329"
+        },
+        {
+            "title": "AI Runtime Security",
+            "desc": "Kill-switches, governance modules, safety-critical constraints",
+            "id": "res-1767104327384-1-770"
+        },
+        {
+            "title": "Adversarial Machine Learning",
+            "desc": "Robustness, poisoning/evasion, red-team AI",
+            "id": "res-1767104327384-2-729"
+        },
+        {
+            "title": "RL-LoRA Behaviour Systems",
+            "desc": "Modular behavioural LoRA patches, dynamic skill composition",
+            "id": "res-1767104327384-3-458"
+        },
+        {
+            "title": "Cyber-Physical & CPS Security",
+            "desc": "Secure sensing, anomaly detection, physical-world adversaries",
+            "id": "res-1767104327384-4-394"
+        },
+        {
+            "title": "Distributed Systems for AI",
+            "desc": "Kubernetes-orchestrated agents, fault-tolerant multi-agent infrastructure",
+            "id": "res-1767104327384-5-626"
+        },
+        {
+            "title": "Trustworthy ML",
+            "desc": "Explainability, uncertainty, distribution shifts",
+            "id": "res-1767104327384-6-836"
+        }
     ],
-
-    tryHackMe: {
-        isVisible: true,
-        rank: "God",
-        roomsCompleted: 142,
-        badges: 26,
-        skills: {
+    "papers": [
+        {
+            "id": "paper-aads",
+            "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+            "pinned": true,
+            "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+            "status": {
+                "stage": "Draft",
+                "artifact": "Research Paper",
+                "confidence": "Exploratory"
+            },
+            "lineage": [],
+            "links": {},
+            "metadata": {
+                "venue": "arXiv Pre-Prints",
+                "contribution": "Systems Design",
+                "limitations": ""
+            },
+            "note": "In Progress",
+            "history": [
+                {
+                    "timestamp": "2025-12-30T14:36:54.526Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Building AADS — Agentic AI Defense Swarms with Safety Governance",
+                        "status": {
+                            "stage": "Preprint",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "abstract": "This paper explores the integration of swarm-level autonomy with strict runtime governance constraints to prevent adversarial subversion in defense swarms. By decoupling the tactical execution layer from the strategic governance layer, we propose a hybrid architecture that maintains mission efficacy while enforcing hard safety boundaries. The research addresses key challenges in multi-agent coordination under adversarial duress, specifically focusing on command authentication and Byzantine fault tolerance in high-stakes environments.",
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Governance",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Related",
+                                "title": "MARL Stress-Test Framework",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#",
+                            "notes": "#"
+                        },
+                        "metadata": {
+                            "venue": "Target: USENIX / CCS",
+                            "contribution": "Systems Design",
+                            "limitations": "Simulated environments only; physical drone testing pending."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:37:27.162Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Preprint",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "Target: arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:44:01.524Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Preprint",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:49:30.803Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Preprint",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:41:55.675Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:43:18.274Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "pinned": true,
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:43:41.520Z",
+                    "msg": "Edited Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                    "snapshot": {
+                        "id": "paper-aads",
+                        "title": "Safety-Critical Governance in Autonomous Swarm Systems - AADS",
+                        "pinned": true,
+                        "abstract": "This paper proposes a safety-critical governance architecture for autonomous swarm systems, focusing on defense-oriented agent collectives operating in adversarial environments. We introduce a governance-first swarm design paradigm in which autonomy is explicitly bounded by runtime-enforced control layers, including behavioral monitoring, anomaly detection, arbitration mechanisms, and irreversible termination pathways. Rather than relying on static policy compliance or post-hoc oversight, the proposed architecture embeds governance directly into the swarm’s operational fabric.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [],
+                        "links": {},
+                        "metadata": {
+                            "venue": "arXiv Pre-Prints",
+                            "contribution": "Systems Design",
+                            "limitations": ""
+                        },
+                        "note": ""
+                    }
+                }
+            ]
+        },
+        {
+            "id": "paper-marl-stress",
+            "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+            "pinned": false,
+            "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+            "status": {
+                "stage": "Draft",
+                "artifact": "Methodology",
+                "confidence": "Exploratory"
+            },
+            "lineage": [
+                {
+                    "type": "Builds on",
+                    "title": "Agentic AI Defense Swarms (AADS)",
+                    "link": ""
+                },
+                {
+                    "type": "Builds on",
+                    "title": "Runtime Governance Notes",
+                    "link": ""
+                }
+            ],
+            "links": {},
+            "metadata": {
+                "venue": "ArXiv Pre-Print",
+                "contribution": "Architectural Design",
+                "limitations": "Focuses on discrete action spaces."
+            },
+            "history": [
+                {
+                    "timestamp": "2025-12-30T14:42:58.222Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "Designing Adversarial Stress-Tests for MARL Agents",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Validated"
+                        },
+                        "abstract": "Standard evaluation metrics for Multi-Agent Reinforcement Learning (MARL) often fail to capture catastrophic edge-cases induced by coordinated adversaries. We introduce a novel stress-testing framework that procedurally generates adversarial scenarios targeting communication channels and sensor integrity. Preliminary results show that even state-of-the-art cooperative agents exhibit brittle failure modes when subjected to noise-injected communication subgraphs.",
+                        "lineage": [],
+                        "links": {
+                            "code": "https://github.com/PardhuSreeRushiVarma20060119",
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "contribution": "Methodological Framework",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:43:24.115Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                        "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "code": "https://github.com/PardhuSreeRushiVarma20060119",
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "venue": "",
+                            "contribution": "Architectural Design",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:44:38.785Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                        "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#Safety-Critical Governance in Autonomous Swarm Systems - AADS"
+                            }
+                        ],
+                        "links": {
+                            "code": "https://github.com/PardhuSreeRushiVarma20060119",
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "venue": "",
+                            "contribution": "Architectural Design",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:48:10.286Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                        "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": ""
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Governance Notes",
+                                "link": ""
+                            }
+                        ],
+                        "links": {
+                            "code": "https://github.com/PardhuSreeRushiVarma20060119",
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "venue": "",
+                            "contribution": "Architectural Design",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:33:12.095Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                        "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": ""
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Governance Notes",
+                                "link": ""
+                            }
+                        ],
+                        "links": {
+                            "code": "https://github.com/PardhuSreeRushiVarma20060119",
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Architectural Design",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:33:19.702Z",
+                    "msg": "Edited REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                    "snapshot": {
+                        "id": "paper-marl-stress",
+                        "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                        "pinned": false,
+                        "abstract": "This paper introduces REVA-4 (Runtime Engine for Vectorized Autonomy), a runtime-first architectural framework that externalizes learned behavior into modular, governable runtime artifacts. REVA-4 enforces a strict separation between frozen base models and dynamically loaded behavioral modules, enabling inspection, isolation, replacement, and destruction of behaviors without modifying the underlying model. By treating autonomy as a runtime-managed process rather than a persistent identity, REVA-4 provides architectural primitives for kill-switches, provenance tracking, canary deployment, and controlled experimentation. The framework is intended as a foundation for building autonomous systems that remain observable, reversible, and governable under adversarial pressure.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": ""
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Governance Notes",
+                                "link": ""
+                            }
+                        ],
+                        "links": {
+                            "experiments": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Architectural Design",
+                            "limitations": "Focuses on discrete action spaces."
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "paper-gov-constraint",
+            "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+            "pinned": false,
+            "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+            "status": {
+                "stage": "Draft",
+                "artifact": "Research Paper",
+                "confidence": "Exploratory"
+            },
+            "lineage": [
+                {
+                    "type": "Precedes",
+                    "title": "Agentic AI Defense Swarms (AADS)",
+                    "link": "#"
+                },
+                {
+                    "type": "Builds on",
+                    "title": "REVA-4 Runtime",
+                    "link": "#"
+                },
+                {
+                    "type": "Builds on",
+                    "title": "SVAR Introduction",
+                    "link": "#"
+                },
+                {
+                    "type": "Builds on",
+                    "title": "LoRA-based Fine-Tuning Experiments",
+                    "link": "#"
+                }
+            ],
+            "links": {
+                "experiments": {
+                    "url": "https://github.com/PardhuSreeRushiVarma20060119/AI-Research-Experimentation-Repository/tree/main/experiments",
+                    "status": "available",
+                    "visibility": "public"
+                }
+            },
+            "metadata": {
+                "venue": "ArXiv Pre-Print",
+                "contribution": "Conceptual / Paradigm",
+                "limitations": ""
+            },
+            "history": [
+                {
+                    "timestamp": "2025-12-30T14:47:46.291Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "Governance as a Technical Constraint in AI Runtime",
+                        "status": {
+                            "stage": "Review",
+                            "artifact": "Position Paper",
+                            "confidence": "Formalized"
+                        },
+                        "abstract": "Current AI safety governance relies heavily on policy and post-hoc auditing. We argue for a shift towards 'Governance as Code'—embedding kill-switches, isolation layers, and immutable audit logs directly into the AI runtime environment. This position paper draws parallels between industrial safety instrumented systems (SIS) and modern AI deployment, proposing a standardized API for runtime intervention.",
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Building AADS",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "SysML Workshop",
+                            "contribution": "Conceptual / Position"
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:48:49.806Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                        "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "SVAR Introduction",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Conceptualized",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:49:20.298Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                        "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "SVAR Introduction",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Conceptual / Paradigm",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:49:59.821Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                        "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Methodology",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "SVAR Introduction",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Conceptual / Paradigm",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T14:52:34.979Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                        "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4: A Runtime Architecture for Governed Autonomous Intelligence",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "SVAR Introduction",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Conceptual / Paradigm",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:41:02.545Z",
+                    "msg": "Edited RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                    "snapshot": {
+                        "id": "paper-gov-constraint",
+                        "title": "RLAE: Runtime Low-Rank Adaptive Environments for Governed Reinforcement Learning",
+                        "abstract": "We propose Runtime Low-Rank Adaptive Environments (RLAE), a paradigm in which reinforcement learning updates are applied exclusively to modular low-rank adapters that exist as runtime-managed behavioral environments. In RLAE, the base model remains permanently frozen, while learned behaviors are externalized as bounded, versioned, and destroyable artifacts. This design enables fine-grained governance over learning outcomes, including behavioral hot-swapping, quarantine, provenance tracking, and kill-switch enforcement. RLAE reframes learning not as identity modification, but as the controlled generation of runtime environments, offering a pathway toward safer and more inspectable adaptive intelligence.",
+                        "status": {
+                            "stage": "Draft",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Precedes",
+                                "title": "Agentic AI Defense Swarms (AADS)",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4 Runtime",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "SVAR Introduction",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "LoRA-based Fine-Tuning Experiments",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {
+                            "pdf": "#"
+                        },
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Conceptual / Paradigm",
+                            "limitations": ""
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "paper-1767106518233",
+            "title": "Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+            "pinned": false,
+            "abstract": "This paper introduces Structural Variance Analysis for Robustness (SVAR), a diagnostic framework designed to assess the structural integrity of modular and runtime-governed agents. SVAR evaluates agent behavior under controlled structural perturbations, measuring variance in outcomes, reasoning trajectories, and sensitivity to module replacement or reset. By analyzing cross-run correlation and response topology, SVAR distinguishes healthy adaptability from unsafe coupling and latent memory persistence. The framework is intended as a complementary evaluation layer for systems such as RLAE, providing empirical signals for reset reliability, kill-switch effectiveness, and long-term governance guarantees.",
+            "status": {
+                "stage": "Research",
+                "artifact": "Research Paper",
+                "confidence": "Exploratory"
+            },
+            "lineage": [
+                {
+                    "type": "Builds on",
+                    "title": "REVA-4 Runtime",
+                    "link": "#"
+                },
+                {
+                    "type": "Builds on",
+                    "title": "RLAE Paradigm",
+                    "link": "#"
+                },
+                {
+                    "type": "Builds on",
+                    "title": "Runtime Safety Experiments",
+                    "link": "#"
+                }
+            ],
+            "links": {
+                "experiments": {
+                    "url": "https://github.com/PardhuSreeRushiVarma20060119/AI-Research-Experimentation-Repository/tree/main/experiments",
+                    "status": "available",
+                    "visibility": "public"
+                }
+            },
+            "metadata": {
+                "venue": "ArXiv Pre-Print",
+                "contribution": "Research / Adversarial Stress Test",
+                "limitations": ""
+            },
+            "history": [
+                {
+                    "timestamp": "2025-12-30T14:55:18.233Z",
+                    "msg": "Created"
+                },
+                {
+                    "timestamp": "2025-12-30T15:12:43.590Z",
+                    "msg": "Edited Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                    "snapshot": {
+                        "id": "paper-1767106518233",
+                        "title": "Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                        "abstract": "This paper introduces Structural Variance Analysis for Robustness (SVAR), a diagnostic framework designed to assess the structural integrity of modular and runtime-governed agents. SVAR evaluates agent behavior under controlled structural perturbations, measuring variance in outcomes, reasoning trajectories, and sensitivity to module replacement or reset. By analyzing cross-run correlation and response topology, SVAR distinguishes healthy adaptability from unsafe coupling and latent memory persistence. The framework is intended as a complementary evaluation layer for systems such as RLAE, providing empirical signals for reset reliability, kill-switch effectiveness, and long-term governance guarantees.",
+                        "status": {
+                            "stage": "Research",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4 Runtime",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "RLAE Paradigm",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Safety Experiments",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {},
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Research / Adversarial Stress Test",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:12:54.349Z",
+                    "msg": "Edited Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                    "snapshot": {
+                        "id": "paper-1767106518233",
+                        "title": "Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                        "pinned": true,
+                        "abstract": "This paper introduces Structural Variance Analysis for Robustness (SVAR), a diagnostic framework designed to assess the structural integrity of modular and runtime-governed agents. SVAR evaluates agent behavior under controlled structural perturbations, measuring variance in outcomes, reasoning trajectories, and sensitivity to module replacement or reset. By analyzing cross-run correlation and response topology, SVAR distinguishes healthy adaptability from unsafe coupling and latent memory persistence. The framework is intended as a complementary evaluation layer for systems such as RLAE, providing empirical signals for reset reliability, kill-switch effectiveness, and long-term governance guarantees.",
+                        "status": {
+                            "stage": "Research",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4 Runtime",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "RLAE Paradigm",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Safety Experiments",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {},
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Research / Adversarial Stress Test",
+                            "limitations": ""
+                        }
+                    }
+                },
+                {
+                    "timestamp": "2025-12-30T15:41:21.676Z",
+                    "msg": "Edited Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                    "snapshot": {
+                        "id": "paper-1767106518233",
+                        "title": "Structural Variance Analysis for Robustness and Reset Integrity in Modular Agents",
+                        "pinned": false,
+                        "abstract": "This paper introduces Structural Variance Analysis for Robustness (SVAR), a diagnostic framework designed to assess the structural integrity of modular and runtime-governed agents. SVAR evaluates agent behavior under controlled structural perturbations, measuring variance in outcomes, reasoning trajectories, and sensitivity to module replacement or reset. By analyzing cross-run correlation and response topology, SVAR distinguishes healthy adaptability from unsafe coupling and latent memory persistence. The framework is intended as a complementary evaluation layer for systems such as RLAE, providing empirical signals for reset reliability, kill-switch effectiveness, and long-term governance guarantees.",
+                        "status": {
+                            "stage": "Research",
+                            "artifact": "Research Paper",
+                            "confidence": "Exploratory"
+                        },
+                        "lineage": [
+                            {
+                                "type": "Builds on",
+                                "title": "REVA-4 Runtime",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "RLAE Paradigm",
+                                "link": "#"
+                            },
+                            {
+                                "type": "Builds on",
+                                "title": "Runtime Safety Experiments",
+                                "link": "#"
+                            }
+                        ],
+                        "links": {},
+                        "metadata": {
+                            "venue": "ArXiv Pre-Print",
+                            "contribution": "Research / Adversarial Stress Test",
+                            "limitations": ""
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "id": "paper-gnim",
+            "title": "Prototyping GNIM: Cyber-Geospatial Intelligence Mapping",
+            "abstract": "GNIM is an experimental system for mapping RF signals to geospatial coordinates to enhance situational awareness in cyber-physical threat modeling. This report details the hardware prototype using defined software radio (SDR) and a custom visualization stack. While the prototype successfully identified signal sources in an urban environment, significant modifications are required for real-time tracking.",
+            "status": {
+                "stage": "Archived",
+                "artifact": "Position Paper",
+                "confidence": "Prototype"
+            },
+            "lineage": [],
+            "links": {
+                "code": "#",
+                "figures": "#"
+            },
+            "metadata": {
+                "venue": "ArXiv Pre-Print",
+                "contribution": "System Prototype",
+                "limitations": "Drone and Initial Framework Under Design Development."
+            },
+            "history": [
+                {
+                    "timestamp": "2025-12-30T14:51:28.125Z",
+                    "msg": "Edited Prototyping GNIM: Cyber-Geospatial Intelligence Mapping",
+                    "snapshot": {
+                        "id": "paper-gnim",
+                        "title": "Prototyping GNIM: Cyber-Geospatial Intelligence Mapping",
+                        "status": {
+                            "stage": "Archived",
+                            "artifact": "Technical Report",
+                            "confidence": "Prototype"
+                        },
+                        "abstract": "GNIM is an experimental system for mapping RF signals to geospatial coordinates to enhance situational awareness in cyber-physical threat modeling. This report details the hardware prototype using defined software radio (SDR) and a custom visualization stack. While the prototype successfully identified signal sources in an urban environment, significant modifications are required for real-time tracking.",
+                        "lineage": [],
+                        "links": {
+                            "code": "#",
+                            "figures": "#"
+                        },
+                        "metadata": {
+                            "contribution": "System Prototype"
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "EpsilonShift",
+            "status": "Scientific Prototype",
+            "tech": "Python, Playwright, Adversarial ML",
+            "description": "Adversarial Fingerprint Obfuscation via Sparse, Deterministic Canvas/WebGL/Audio Perturbations. A small research-grade prototype that injects tiny adversarial perturbations into browser fingerprinting APIs.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/Mini-Projects",
+            "id": "pro-1767104327384-0-266"
+        },
+        {
+            "title": "AADS (Agentic AI Defense Swarms)",
+            "status": "Research",
+            "tech": "Swarm Intelligence, MARL",
+            "description": "Agentic Swarm Intelligence system focusing on safe governance and swarm-level autonomy with flight/defense coordination.",
+            "link": "#",
+            "id": "pro-1767104327384-1-376"
+        },
+        {
+            "title": "REVA-4 Runtime",
+            "status": "Under Development",
+            "tech": "Rust, RL-LoRA",
+            "description": "Developing the REVA4 Runtime — RL-LoRA behavioural runtime for modular, controllable AI behaviours with runtime safety guarantees.",
+            "link": "#",
+            "id": "pro-1767104327384-2-260"
+        },
+        {
+            "title": "Loadiscator",
+            "status": "Tooling",
+            "tech": "Python, C++",
+            "description": "Modular, extensible framework for generating, obfuscating, and delivering payloads for red team operations, adversary simulation, and AV/EDR evasion research.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/loadiscator",
+            "id": "pro-1767104327384-3-133"
+        },
+        {
+            "title": "Project Ouroboros",
+            "status": "Hardware/CPS",
+            "tech": "ESP32, Firmware",
+            "description": "Modular, dual-use cybersecurity platform encompassing multiple ESP32-based hardware and firmware modules for wireless defense, monitoring, and controlled research.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/Project-Ouroboros",
+            "id": "pro-1767104327384-4-705"
+        },
+        {
+            "title": "PhishTrap",
+            "status": "Simulation Platform",
+            "tech": "Kali Linux, Python, Flask",
+            "description": "Immersive phishing simulation challenge where participants took on the role of adversaries to ethically breach human-layer defenses.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/PhishTrap",
+            "id": "pro-1767104327384-5-839"
+        },
+        {
+            "title": "The Nexus Security",
+            "status": "Command Center",
+            "tech": "React, OSINT",
+            "description": "Web-based cybersecurity management & command centre platform aimed at enhancing vulnerability assessment and threat intelligence.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/The-Nexus-Security",
+            "id": "pro-1767104327384-6-764"
+        },
+        {
+            "title": "HuggingFace-Training",
+            "status": "Experiments",
+            "tech": "Transformers, RL",
+            "description": "Hands-on examples, experiments, and scripts for training models with HuggingFace libraries — from reinforcement learning agents to transformers for NLP tasks.",
+            "link": "https://github.com/PardhuSreeRushiVarma20060119/HuggingFace-Training",
+            "id": "pro-1767104327384-7-366"
+        }
+    ],
+    "blogs": [
+        {
+            "id": "bfs-1",
+            "title": "Why Inspectability Is a Safety Requirement",
+            "date": "Oct 2025",
+            "type": "Essay",
+            "desc": "Discussing the need for transparent internal states in autonomous agents."
+        },
+        {
+            "id": "bfs-2",
+            "title": "Failure-First Thinking in System Design",
+            "date": "Sep 2025",
+            "type": "Note",
+            "desc": "Designing systems that assume breach and failure as the default state."
+        },
+        {
+            "id": "bfs-3",
+            "title": "Runtime constraints for LLM agents",
+            "date": "Aug 2025",
+            "type": "Research Note",
+            "desc": "Exploration of hard constraints vs soft prompts for agent control."
+        }
+    ],
+    "timeline": [
+        {
+            "title": "Multi-Cloud Red Team Analyst (MCRTA)",
+            "org": "CyberWarFare Labs",
+            "date": "Jul 2025",
+            "id": "tim-1767104327384-0-447"
+        },
+        {
+            "title": "Certified Red Team Analyst (CRTA)",
+            "org": "CyberWarFare Labs",
+            "date": "Aug 2025",
+            "id": "tim-1767104327384-1-7"
+        },
+        {
+            "title": "Student Coordinator - PhishTrap",
+            "org": "Malla Reddy University",
+            "date": "Apr 2025",
+            "id": "tim-1767104327384-2-550"
+        },
+        {
+            "title": "B.Tech Cybersecurity",
+            "org": "Malla Reddy University",
+            "date": "Jul 2023 - Present",
+            "id": "tim-1767104327384-3-733"
+        },
+        {
+            "title": "Intermediate (MPC)",
+            "org": "Sri Chaitanya College",
+            "date": "May 2021 - Jun 2023",
+            "id": "tim-1767104327384-4-448"
+        },
+        {
+            "title": "Secondary Education",
+            "org": "Sri Chaitanya Techno School",
+            "date": "May 2019 - Apr 2021",
+            "id": "tim-1767104327384-5-788"
+        }
+    ],
+    "certifications": [
+        {
+            "name": "Multi-Cloud Red Team Analyst (MCRTA)",
+            "issuer": "CyberWarFare Labs",
+            "date": "Jul 2025",
+            "id": "cer-1767104327384-0-877"
+        },
+        {
+            "name": "Certified Red Team Analyst (CRTA)",
+            "issuer": "CyberWarFare Labs",
+            "date": "Aug 2025",
+            "id": "cer-1767104327384-1-380"
+        },
+        {
+            "name": "Big IAM Challenge Certificate",
+            "issuer": "Wiz",
+            "date": "May 2025",
+            "id": "cer-1767104327384-2-965"
+        },
+        {
+            "name": "Google Foundations of Cybersecurity",
+            "issuer": "Google",
+            "date": "Apr 2025",
+            "id": "cer-1767104327384-3-929"
+        },
+        {
+            "name": "API Security Fundamentals '25",
+            "issuer": "APIsec University",
+            "date": "Oct 2025",
+            "id": "cer-1767104327384-4-487"
+        },
+        {
+            "name": "Securing LLM and NLP APIs",
+            "issuer": "APIsec University",
+            "date": "Oct 2025",
+            "id": "cer-1767104327384-5-340"
+        },
+        {
+            "name": "Top 10% API Coder",
+            "issuer": "Credmark",
+            "date": "Oct 2025",
+            "id": "cer-1767104327384-6-150"
+        },
+        {
+            "name": "Complete Agentic AI Engineering Course",
+            "issuer": "Udemy",
+            "date": "Sep 2025",
+            "id": "cer-1767104327384-7-70"
+        },
+        {
+            "name": "Advanced C++ Excellence",
+            "issuer": "Scaler",
+            "date": "Feb 2025",
+            "id": "cer-1767104327384-8-591"
+        },
+        {
+            "name": "Palo Alto Networks: Network Security Fundamentals",
+            "issuer": "Palo Alto Networks",
+            "date": "Sep 2024",
+            "id": "cer-1767104327384-9-127"
+        },
+        {
+            "name": "ISC2 Candidate (CC Certifications)",
+            "issuer": "ISC2",
+            "date": "Feb 2025",
+            "id": "cer-1767104327384-10-2"
+        },
+        {
+            "name": "Advent of Cyber 24",
+            "issuer": "TryHackMe",
+            "date": "Mar 2025",
+            "id": "cer-1767104327384-11-73"
+        },
+        {
+            "name": "2nd Place - Growth Ninja Hackathon",
+            "issuer": "IIT Hyderabad",
+            "date": "Mar 2025",
+            "id": "cer-1767104327384-12-617"
+        }
+    ],
+    "contact": {
+        "email": "pardhusreerushivarma@gmail.com",
+        "github": "https://github.com/PardhuSreeRushiVarma20060119",
+        "linkedin": "https://www.linkedin.com/in/pardhu-sri-rushi-varma-konduru-696886279/",
+        "location": "Hyderabad, India"
+    },
+    "tryHackMe": {
+        "isVisible": true,
+        "rank": "22783 (Top 2%)",
+        "roomsCompleted": 143,
+        "badges": 18,
+        "skills": {
             "Web Fundamentals": 100,
             "Network Security": 90,
             "Privilege Escalation": 85,
             "Windows Exploitation": 80,
             "Active Directory": 75
-        }
-    },
-
-    papers: [
-        {
-            id: "paper-aads",
-            title: "Building AADS — Agentic AI Defense Swarms with Safety Governance",
-            status: {
-                stage: "Preprint",
-                artifact: "Research Paper",
-                confidence: "Exploratory"
-            },
-            abstract: "This paper explores the integration of swarm-level autonomy with strict runtime governance constraints to prevent adversarial subversion in defense swarms. By decoupling the tactical execution layer from the strategic governance layer, we propose a hybrid architecture that maintains mission efficacy while enforcing hard safety boundaries. The research addresses key challenges in multi-agent coordination under adversarial duress, specifically focusing on command authentication and Byzantine fault tolerance in high-stakes environments.",
-            lineage: [
-                { type: "Builds on", title: "Runtime Governance", link: "#" },
-                { type: "Related", title: "MARL Stress-Test Framework", link: "#" }
-            ],
-            links: {
-                pdf: "#",
-                notes: "#"
-            },
-            metadata: {
-                venue: "Target: USENIX / CCS",
-                contribution: "Systems Design",
-                limitations: "Simulated environments only; physical drone testing pending."
-            }
         },
-        {
-            id: "paper-marl-stress",
-            title: "Designing Adversarial Stress-Tests for MARL Agents",
-            status: {
-                stage: "Draft",
-                artifact: "Methodology",
-                confidence: "Validated"
-            },
-            abstract: "Standard evaluation metrics for Multi-Agent Reinforcement Learning (MARL) often fail to capture catastrophic edge-cases induced by coordinated adversaries. We introduce a novel stress-testing framework that procedurally generates adversarial scenarios targeting communication channels and sensor integrity. Preliminary results show that even state-of-the-art cooperative agents exhibit brittle failure modes when subjected to noise-injected communication subgraphs.",
-            lineage: [],
-            links: {
-                code: "https://github.com/PardhuSreeRushiVarma20060119",
-                experiments: "#"
-            },
-            metadata: {
-                contribution: "Methodological Framework",
-                limitations: "Focuses on discrete action spaces."
-            }
-        },
-        {
-            id: "paper-gov-constraint",
-            title: "Governance as a Technical Constraint in AI Runtime",
-            status: {
-                stage: "Review",
-                artifact: "Position Paper",
-                confidence: "Formalized"
-            },
-            abstract: "Current AI safety governance relies heavily on policy and post-hoc auditing. We argue for a shift towards 'Governance as Code'—embedding kill-switches, isolation layers, and immutable audit logs directly into the AI runtime environment. This position paper draws parallels between industrial safety instrumented systems (SIS) and modern AI deployment, proposing a standardized API for runtime intervention.",
-            lineage: [
-                { type: "Precedes", title: "Building AADS", link: "#" }
-            ],
-            links: {
-                pdf: "#"
-            },
-            metadata: {
-                venue: "SysML Workshop",
-                contribution: "Conceptual / Position"
-            }
-        },
-        {
-            id: "paper-gnim",
-            title: "Prototyping GNIM: Cyber-Geospatial Intelligence Mapping",
-            status: {
-                stage: "Archived",
-                artifact: "Technical Report",
-                confidence: "Prototype"
-            },
-            abstract: "GNIM is an experimental system for mapping RF signals to geospatial coordinates to enhance situational awareness in cyber-physical threat modeling. This report details the hardware prototype using defined software radio (SDR) and a custom visualization stack. While the prototype successfully identified signal sources in an urban environment, significant modifications are required for real-time tracking.",
-            lineage: [],
-            links: {
-                code: "#",
-                figures: "#"
-            },
-            metadata: {
-                contribution: "System Prototype"
-            }
-        }
-    ],
-
-    projects: [
-        {
-            title: "EpsilonShift",
-            status: "Scientific Prototype",
-            tech: "Python, Playwright, Adversarial ML",
-            description: "Adversarial Fingerprint Obfuscation via Sparse, Deterministic Canvas/WebGL/Audio Perturbations. A small research-grade prototype that injects tiny adversarial perturbations into browser fingerprinting APIs.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/Mini-Projects"
-        },
-        {
-            title: "AADS (Agentic AI Defense Swarms)",
-            status: "Research",
-            tech: "Swarm Intelligence, MARL",
-            description: "Agentic Swarm Intelligence system focusing on safe governance and swarm-level autonomy with flight/defense coordination.",
-            link: "#"
-        },
-        {
-            title: "REVA-4 Runtime",
-            status: "Under Development",
-            tech: "Rust, RL-LoRA",
-            description: "Developing the REVA4 Runtime — RL-LoRA behavioural runtime for modular, controllable AI behaviours with runtime safety guarantees.",
-            link: "#"
-        },
-        {
-            title: "Loadiscator",
-            status: "Tooling",
-            tech: "Python, C++",
-            description: "Modular, extensible framework for generating, obfuscating, and delivering payloads for red team operations, adversary simulation, and AV/EDR evasion research.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/loadiscator"
-        },
-        {
-            title: "Project Ouroboros",
-            status: "Hardware/CPS",
-            tech: "ESP32, Firmware",
-            description: "Modular, dual-use cybersecurity platform encompassing multiple ESP32-based hardware and firmware modules for wireless defense, monitoring, and controlled research.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/Project-Ouroboros"
-        },
-        {
-            title: "PhishTrap",
-            status: "Simulation Platform",
-            tech: "Kali Linux, Python, Flask",
-            description: "Immersive phishing simulation challenge where participants took on the role of adversaries to ethically breach human-layer defenses.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/PhishTrap"
-        },
-        {
-            title: "The Nexus Security",
-            status: "Command Center",
-            tech: "React, OSINT",
-            description: "Web-based cybersecurity management & command centre platform aimed at enhancing vulnerability assessment and threat intelligence.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/The-Nexus-Security"
-        },
-        {
-            title: "HuggingFace-Training",
-            status: "Experiments",
-            tech: "Transformers, RL",
-            description: "Hands-on examples, experiments, and scripts for training models with HuggingFace libraries — from reinforcement learning agents to transformers for NLP tasks.",
-            link: "https://github.com/PardhuSreeRushiVarma20060119/HuggingFace-Training"
-        }
-    ],
-
-    blogs: [
-        {
-            id: "bfs-1",
-            title: "Why Inspectability Is a Safety Requirement",
-            date: "Oct 2025",
-            type: "Essay",
-            desc: "Discussing the need for transparent internal states in autonomous agents."
-        },
-        {
-            id: "bfs-2",
-            title: "Failure-First Thinking in System Design",
-            date: "Sep 2025",
-            type: "Note",
-            desc: "Designing systems that assume breach and failure as the default state."
-        },
-        {
-            id: "bfs-3",
-            title: "Runtime constraints for LLM agents",
-            date: "Aug 2025",
-            type: "Research Note",
-            desc: "Exploration of hard constraints vs soft prompts for agent control."
-        }
-    ],
-
-    timeline: [
-        { title: "Multi-Cloud Red Team Analyst (MCRTA)", org: "CyberWarFare Labs", date: "Jul 2025" },
-        { title: "Certified Red Team Analyst (CRTA)", org: "CyberWarFare Labs", date: "Aug 2025" },
-        { title: "Student Coordinator - PhishTrap", org: "Malla Reddy University", date: "Apr 2025" },
-        { title: "B.Tech Cybersecurity", org: "Malla Reddy University", date: "Jul 2023 - Present" },
-        { title: "Intermediate (MPC)", org: "Sri Chaitanya College", date: "May 2021 - Jun 2023" },
-        { title: "Secondary Education", org: "Sri Chaitanya Techno School", date: "May 2019 - Apr 2021" }
-    ],
-
-    certifications: [
-        { name: "Multi-Cloud Red Team Analyst (MCRTA)", issuer: "CyberWarFare Labs", date: "Jul 2025" },
-        { name: "Certified Red Team Analyst (CRTA)", issuer: "CyberWarFare Labs", date: "Aug 2025" },
-        { name: "Big IAM Challenge Certificate", issuer: "Wiz", date: "May 2025" },
-        { name: "Google Foundations of Cybersecurity", issuer: "Google", date: "Apr 2025" },
-        { name: "API Security Fundamentals '25", issuer: "APIsec University", date: "Oct 2025" },
-        { name: "Securing LLM and NLP APIs", issuer: "APIsec University", date: "Oct 2025" },
-        { name: "Top 10% API Coder", issuer: "Credmark", date: "Oct 2025" },
-        { name: "Complete Agentic AI Engineering Course", issuer: "Udemy", date: "Sep 2025" },
-        { name: "Advanced C++ Excellence", issuer: "Scaler", date: "Feb 2025" },
-        { name: "Palo Alto Networks: Network Security Fundamentals", issuer: "Palo Alto Networks", date: "Sep 2024" },
-        { name: "ISC2 Candidate (CC Certifications)", issuer: "ISC2", date: "Feb 2025" },
-        { name: "Advent of Cyber 24", issuer: "TryHackMe", date: "Mar 2025" },
-        { name: "2nd Place - Growth Ninja Hackathon", issuer: "IIT Hyderabad", date: "Mar 2025" }
-    ],
-
-    contact: {
-        email: "pardhusreerushivarma@gmail.com",
-        github: "https://github.com/PardhuSreeRushiVarma20060119",
-        linkedin: "https://www.linkedin.com/in/pardhu-sri-rushi-varma-konduru-696886279/",
-        location: "Hyderabad, India"
+        "username": "ZenRage"
     }
 };
