@@ -12,7 +12,7 @@ The system is built on a **Zero-Backend Architecture**, meaning all logic, data 
 - **Runtime**: React 19 (via Vite)
 - **Styling**: Vanilla CSS3 with extensive CSS Variables (`var(--accent-cyber)`) for dynamic theming and Glassmorphism effects.
 - **Visuals**: `Three.js` (@react-three/fiber) for hardware-accelerated background particle systems.
-- **Analytics**: Vercel Analytics for traffic and performance monitoring.
+- **Analytics**: Vercel Analytics & Speed Insights for traffic and performance monitoring.
 - **Routing**: `react-router-dom` v7 for client-side navigation.
 
 ### Data Persistence Layer (`DataContext`)

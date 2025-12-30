@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider, useData } from './context/DataContext';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import LabBackground from './components/LabBackground';
 import JournalLayout from './components/JournalLayout';
@@ -64,6 +65,7 @@ function App() {
       <DataProvider>
         <MainLayout />
         <Analytics />
+        <SpeedInsights />
       </DataProvider>
     </AuthProvider>
   );
