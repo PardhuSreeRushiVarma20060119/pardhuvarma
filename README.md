@@ -56,20 +56,21 @@ A standard RFC 6238 implementation provided by `otpauth`.
 
 ---
 
-## 🧠 "Second Brain" System
+---
 
-This feature set allows the user to perform Content Management (CMS) duties directly in the production build.
+## 🔬 Research Workflow & Data Management
 
-### Components
-- **Intellectual Changelog**: A public feed of thought evolution, similar to a commit history for ideas.
-- **Idea Parking Lot**:
-    - **Public**: Broad concepts shared with visitors.
-    - **Private**: Admin-only encrypted-at-rest (local) scratchpad.
-- **Private Notes**: A third column in the Kanban board, rendered strictly conditionally based on `isAdmin && adminMode`.
+The Handbook is optimized for academic and technical research workflows, ensuring data is not only editable but portable.
 
-### Engineering Patterns
-- **Conditional Rendering**: Components like `NoteEditor` and delete buttons are physically removed from the DOM (not just hidden) when not in Admin Mode to prevent client-side tampering via DevTools.
-- **Optimistic UI**: State updates are reflected immediately in the UI while asynchronously syncing to `localStorage`.
+### 1. Publication Management
+- **Pinned Research**: Highlight critical papers or drafts at the top of your portfolio.
+- **Dynamic Reordering**: Fine-tune the narrative of your work by moving papers up or down in the list using the `Up/Down` controls (Admin only).
+- **Custom Version Notes**: Each paper can now feature a custom footer note (e.g., "In Submission", "Updated Dec 2025"), editable directly via the `PublicationEditor`.
+
+### 2. Data Portability (Zero-Lock-in)
+- **Export DB**: Download your entire state (Settings, Projects, Notes) as a single `portfolio_backup.json` file.
+- **Copy JSON**: Instant clipboard copy of the application state for quick migration or backup.
+- **Sync Engine**: Updates to `src/data/content.js` are reflected in the live build, ensuring your initial visitors see your latest state.
 
 ---
 
@@ -86,10 +87,10 @@ The "Projects" section utilizes a responsive Bento Grid (`src/components/BentoGr
 Extensive use of `backdrop-filter: blur()` combined with semi-transparent RGBA backgrounds to create depth and hierarchy.
 - **Utility**: `SettingsPanel`, `SecurityModal`, and `AdminBar` hover above the content on a Z-index of 3000+.
 
-### Personalization Engine
+### Personalization & Branding
 Admins can customize the visual identity directly from the Settings Panel.
-- **Dynamic Profile Picture**: Upload and crop base64 images locally.
-- **Custom Backlight**: Real-time color picker for element glow effects (CSS Variables hot-swapping).
+- **Dynamic Profile Picture**: Robust fallback system that prioritizes `localStorage` uploads, with a reliable build-time fallback to `src/assets/profile.jpg`.
+- **Accent Theming**: Real-time color picker (`#00ff41` default) for cyber-glow effects.
 - **Reading Modes**: Toggle between standard Cyber-Dark and **Paper Mode** (Dark Sepia) for eye comfort.
 
 ---
@@ -112,10 +113,10 @@ Admins can customize the visual identity directly from the Settings Panel.
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/PardhuSreeRushiVarma20060119/researchers-handbook-myportfolio.git
+git clone https://github.com/PardhuSreeRushiVarma20060119/pardhuvarma.git
 
 # 2. Enter the directory
-cd researchers-handbook-myportfolio
+cd pardhuvarma
 
 # 3. Install dependencies
 npm install
